@@ -1,0 +1,62 @@
+def ingresar_usuario():
+    while True:
+        nombre = input("Ingrese nombre de un usuario: ").strip()
+
+        if any(u[nombre].lower() == nombre.lower() for u in usuario):
+            print ("El nombre de usuario ya existe. Intente con otro.")
+            continue
+
+        sexo = input("Ingrese sexo (M/F): ").strip().upper()
+        if sexo not in ("M", "F"):
+            print("Debe ingresar M o F solamente. Intente denuevo.")
+            continue
+
+        contraseña = input ("Ingrese contraseña: ").strip()
+        if len(contraseña) < 8 or " " in contraseña:
+            print ("La contraseña debe tener minimo 8 caracteres y sin espacios: ")
+            continue
+
+        usuario = {"nombre": nombre, "sexo": sexo, "contraseña": contraseña}
+        usuarios.append {usuario}
+        print("Usuario ingresado exitosamente")
+        break
+
+def buscar_usuario():
+    nombre = input("Ingrese nombre de usuario a buscar: ").strip()
+    for usuario in usuarios: 
+        if usuario ["nombre"].lower() == nombre.lower():
+            print("Usuario encontrado:") {usuario["sexo"]}
+            return
+        print("El usuario no se encuentra")
+
+def eliminar_usuario():
+    nombre = input("Ingrese nombre de usuario a eliminar: ").strip()
+    for usuario in usuarios:
+        if usuario ["nombre"].lower() == nombre.lower():
+            usuarios.remove(usuario)
+            print("No se pudo eliminar usuario")
+
+def menu():
+    while True:
+        print("MENU PRINCIPAL")
+        print("1.- Ingresar Usuario")
+        print("2.- Buscar Usuario")
+        print("3.- Eliminar Usuario")
+        print("4.- Salir")
+        try:
+            opcion = int(input("Ingrese opcion: "))
+        except ValueError:
+            print("Debe ingresar un número válido")
+            continue
+        if opcion == 1:
+            ingresar_usuario()
+        elif opcion == 2:
+            buscar_usuario()
+        elif opcion == 3:
+            eliminar_usuario()
+        elif opcion == 4:
+            print("Programa terminado.")
+            break
+        else:
+            print(" Opcion no valida. Intente nuevamente")
+menu()        
